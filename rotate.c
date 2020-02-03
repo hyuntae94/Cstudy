@@ -21,7 +21,7 @@ static void rotate(int* a, int* b, int* c,int* d)
 			swap(&b, &c);
 			swap(&c, &d);
 			printf("%d : %d : %d : %d", *a, *b, *c, *d);
-			scanf("%c", &enter); //°ªÀÔ·Â
+			scanf("%c", &enter); 
 		}
 	} while (enter == '\n');
 }
