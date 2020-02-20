@@ -1,21 +1,28 @@
-#define _CRT_SECURE_NO_WARNINGS
+#define  _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
 
-//Main함수의 명령행 인수 사용
-int main(int argc, char** argv) // (인수개수,char포인터배열 시작주소)
+int main(void)
 {
-	//case1
-	int i;
-	for (i = 0; i < argc; i++)
+	int i = 0;
+	int size = 5;
+	int* pi = (int*)calloc(size, sizeof(int));
+	while (1)
 	{
-		printf("%s\n", argv[i]);
+		printf("양수만 입력하세요 : ");
+		scanf("%d", &pi[i]);
+		if (pi[i] <= 0) break;
+		i++;
+		if (i % size == 0)
+		{
+			size += 5;
+			pi = (int*)realloc(pi, size * sizeof(int));
+		}
 	}
-
-	//case2
-	while (*argv != NULL)
+	for (int j = 0; j < i; j++)
 	{
-		printf("%s\n", *argv);
-		argv++;
+		printf("%5d", pi[j]);
 	}
+	free(pi);
 	return 0;
 }
